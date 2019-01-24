@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Courses";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@model DotKreida.ViewModels.ContentCoursesViewModel
+
+<main role="main" class="container">
+    <ul class="breadcrumb bg-transparent pl-0">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="content.html">Content</a></li>
+        <li class="breadcrumb-item active">@ViewBag.TopicName</li>
+    </ul>
+
+    <div class="row">
+        @foreach (var course in Model.CurrentPageCourses) {
+            <div class="col-12 col-sm-6 col-md-4 mb-3">
+                <a class="card card-theme-topic" href="lesson.html">
+                    <img class="card-img-top" src="~/Content/images/@course.ImageUrl" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">@course.Name</h4>
+                        <h6 class="card-subtitle text-muted">@course.User.UserName</h6>
+                        <p>@course.Description</p>
+                    </div>
+                    <div class="card-footer bg-transparent d-flex justify-content-between">
+                        <p class="m-0 text-muted">@course.PublishingDate.ToShortDateString()</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item">
+            @if (Model.CurrentPage == 1) {
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+        } else {
+            <li class="page-item"><a class="page-link" href="~/Content/Courses/@ViewBag.TopicName/@(Model.CurrentPage-1)">Previous</a></li>
+        }
+            <li class="page-item disabled"><a class="page-link" href="#">@Model.CurrentPage</a></li>
+            @foreach (var pageNumber in Model.NextTwoPages) {
+                <li class="page-item"><a class="page-link" href="~/Content/Courses/@ViewBag.TopicName/@pageNumber">@pageNumber</a></li>
+            }
+            @if (Model.NextTwoPages.Count == 0) {
+                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+            } else {
+                <li class="page-item"><a class="page-link" href="~/Content/Courses/@ViewBag.TopicName/@(Model.CurrentPage+1)">Next</a></li>
+            }
+        </ul>
+    </main>

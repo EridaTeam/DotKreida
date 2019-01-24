@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="~/Content/css/app.css">
+</head>
+<body>
+    <header class="bg-dark">
+        <div class="container p-0">
+            <div class="navbar navbar-expand-sm navbar-dark">
+                <a href="index.html" class="navbar-brand">Logo</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Home/Index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Content/Topics">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="~/Home/About">About</a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-2 mt-sm-0 text-center">
+                        <a href="login.html" class="btn btn-outline-info mr-2">Login</a>
+                        <a href="registration.html" class="btn btn-outline-info">Register</a>
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <form class="mt-2">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search..." aria-label="Search" aria-describedby="button-search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="submit" id="button-search">Go!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @RenderBody()
+
+    <script src="~/Content/js/jquery.slim.min.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+</body>
+</html>

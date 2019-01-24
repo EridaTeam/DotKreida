@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Topics";
+    Layout = "~/Views/_Layout.cshtml";
+}
+@model DotKreida.ViewModels.ContentTopicsViewModel
+
+<main role="main" class="container">
+    <ul class="breadcrumb bg-transparent pl-0">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Content</li>
+    </ul>
+    <div class="row">
+        @foreach (var topic in Model.Topics) {
+            <div class="col-12 col-sm-6 col-md-4 mb-3">
+                <a class="card card-theme-topic" href="~/Content/Courses/@topic.Name">
+                    <img class="card-img-top" src="~/Content/images/@topic.ImageUrl" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">@topic.Name</h4>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <p class="m-0">@topic.Courses.Count</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</main>
+
